@@ -1,0 +1,7 @@
+code,title,description,credits,maxStudents,currentEnrolled,semester,schedule,roomNumber,isActive,departmentCode_code,professorId_ID
+CS101,Programming Fundamentals,Basics of Programming,4,60,45,1,MWF 10:00-11:00,R101,true,CSE,11111111-1111-1111-1111-111111111111
+CS201,Data Structures,DS Concepts,4,50,40,3,TTS 09:00-10:00,R102,true,CSE,44444444-4444-4444-4444-444444444444
+CS301,Database Systems,Relational Databases,4,45,35,5,MWF 02:00-03:00,R103,true,CSE,11111111-1111-1111-1111-111111111111
+EC101,Circuit Theory,Basic Electronics,3,60,55,1,MWF 11:00-12:00,R201,true,ECE,22222222-2222-2222-2222-222222222222
+EC301,Digital Communication,Communication Systems,4,40,30,5,TTS 01:00-02:00,R202,true,ECE,55555555-5555-5555-5555-555555555555
+MBA101,Management Principles,Business Management,3,70,50,1,MWF 03:00-04:00,R301,true,MBA,33333333-3333-3333-3333-333333333333

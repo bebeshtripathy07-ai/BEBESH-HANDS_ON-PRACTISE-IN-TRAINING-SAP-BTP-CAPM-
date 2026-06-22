@@ -1,0 +1,7 @@
+ID,firstName,lastName,specialization,qualification,experience,fee,department_ID,phone,email,availableDays,isActive
+d1111111-1111-1111-1111-111111111111,Rajesh,Sharma,Cardiologist,MBBS MD,12,1000,11111111-1111-1111-1111-111111111111,9876500001,rajesh@medicare.com,"Mon,Tue,Wed",true
+d2222222-2222-2222-2222-222222222222,Priya,Singh,Neurologist,MBBS DM,10,1200,22222222-2222-2222-2222-222222222222,9876500002,priya@medicare.com,"Mon,Thu,Fri",true
+d3333333-3333-3333-3333-333333333333,Amit,Kumar,Orthopedic Surgeon,MBBS MS,15,1500,33333333-3333-3333-3333-333333333333,9876500003,amit@medicare.com,"Tue,Wed,Sat",true
+d4444444-4444-4444-4444-444444444444,Neha,Gupta,Pediatrician,MBBS MD,8,900,44444444-4444-4444-4444-444444444444,9876500004,neha@medicare.com,"Mon,Tue,Fri",true
+d5555555-5555-5555-5555-555555555555,Sanjay,Patel,Cardiologist,MBBS MD,9,1100,11111111-1111-1111-1111-111111111111,9876500005,sanjay@medicare.com,"Wed,Thu,Fri",true
+d6666666-6666-6666-6666-666666666666,Anita,Rao,Neurologist,MBBS DM,11,1300,22222222-2222-2222-2222-222222222222,9876500006,anita@medicare.com,"Tue,Thu,Sat",true

@@ -1,0 +1,42 @@
+### GET courses filtered by department and semester
+
+GET http://localhost:4004/university/Courses?$filter=departmentCode_code eq 'CSE' and semester eq 5
+
+
+### GET students with CGPA above 8.0
+
+GET http://localhost:4004/university/Students?$filter=cgpa gt 8.0
+
+
+### POST new enrollment
+
+POST http://localhost:4004/university/Enrollments
+Content-Type: application/json
+
+{
+  "studentId_ID":"a8888888-8888-8888-8888-888888888888",
+  "courseCode_code":"CS301",
+  "enrollmentDate":"2026-01-15"
+}
+
+
+### GET all enrollments for specific student
+
+GET http://localhost:4004/university/Enrollments?$filter=studentId_ID eq 'a1111111-1111-1111-1111-111111111111'
+
+
+### Courses with available seats
+
+GET http://localhost:4004/university/Courses?$filter=currentEnrolled lt maxStudents
+
+
+### PATCH enrollment to add grade
+
+PATCH http://localhost:4004/university/Enrollments(studentId_ID='a1111111-1111-1111-1111-111111111111',courseCode_code='CS301')
+Content-Type: application/json
+
+{
+   "grade":"A",
+   "gradePoints":9.99,
+   "status":"Completed"
+}

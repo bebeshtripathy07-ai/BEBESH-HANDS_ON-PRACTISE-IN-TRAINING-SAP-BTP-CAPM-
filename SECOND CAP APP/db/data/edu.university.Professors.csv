@@ -1,0 +1,10 @@
+ID,firstName,lastName,email,phone,designation,joinDate,salary,officeRoom,departmentCode_code
+11111111-1111-1111-1111-111111111111,Rajesh,Kumar,rajesh@techu.edu,9876543210,Full,2010-01-15,120000,P101,CSE
+
+22222222-2222-2222-2222-222222222222,Priya,Sharma,priya@techu.edu,9876543211,Associate,2014-06-10,95000,P102,ECE
+
+33333333-3333-3333-3333-333333333333,Amit,Verma,amit@techu.edu,9876543212,Distinguished,2008-09-20,150000,P103,MBA
+
+44444444-4444-4444-4444-444444444444,Anjali,Singh,anjali@techu.edu,9876543213,Assistant,2020-07-01,75000,P104,CSE
+
+55555555-5555-5555-5555-555555555555,Rohit,Patel,rohit@techu.edu,9876543214,Associate,2018-02-12,90000,P105,ECE

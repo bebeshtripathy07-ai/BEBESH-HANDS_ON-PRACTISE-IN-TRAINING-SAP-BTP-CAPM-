@@ -1,0 +1,166 @@
+### Deep Insert Sales Order
+POST http://localhost:4004/sales/SalesOrders
+Content-Type: application/json
+
+{
+  "orderNumber": "SO2001",
+  "customer_ID": "cus1",
+  "orderDate": "2026-06-05",
+  "totalAmount": 1600,
+  "currency_code": "INR",
+  "status": "Created",
+  "items": [
+    {
+      "product_ID": "prd3",
+      "quantity": 2,
+      "unitPrice": 800,
+      "netAmount": 1600
+    }
+  ]
+}
+
+### ===================================================================
+@sales = http://localhost:4004/sales
+
+### Test 1: Create order without customer (should fail)
+POST {{sales}}/SalesOrders
+Content-Type: application/json
+
+{
+  "orderDate": "2026-06-15",
+  "items": [
+    {
+      "product_ID": "prd1",
+      "quantity": 2,
+      "unitPrice": 55000
+    }
+  ]
+}
+
+### Test 2: Create order with past date (should fail)
+POST {{sales}}/SalesOrders
+Content-Type: application/json
+
+{
+  "customer_ID": "cus1",
+  "orderDate": "2020-01-01",
+  "items": [
+    {
+      "product_ID": "prd1",
+      "quantity": 2,
+      "unitPrice": 55000
+    }
+  ]
+}
+
+### Test 3: Create order with invalid item (quantity 0)
+POST {{sales}}/SalesOrders
+Content-Type: application/json
+
+{
+  "customer_ID": "cus1",
+  "orderDate": "2026-06-15",
+  "items": [
+    {
+      "product_ID": "prd1",
+      "quantity": 0,
+      "unitPrice": 55000
+    }
+  ]
+}
+
+### Test 4: Create valid order
+POST {{sales}}/SalesOrders
+Content-Type: application/json
+
+{
+  "customer_ID": "cus1",
+  "orderNumber": "SO2001",
+  "orderDate": "2026-06-15",
+  "currency_code": "INR",
+  "items": [
+    {
+      "product_ID": "prd1",
+      "quantity": 2,
+      "unitPrice": 55000
+    },
+    {
+      "product_ID": "prd3",
+      "quantity": 2,
+      "unitPrice": 800
+    }
+  ]
+}
+
+
+
+### Test 5: Try invalid status transition (New → Delivered should fail)
+PATCH {{sales}}/SalesOrders(ORDER-ID-FROM-TEST-4)
+Content-Type: application/json
+
+{
+  "status": "Delivered"
+}
+
+### Test 6: Valid status transition (New → Confirmed)
+PATCH {{sales}}/SalesOrders(bc90c0e2-d744-4d7d-8570-4903e03ad180)
+Content-Type: application/json
+
+{
+  "status": "Delivered"
+}
+
+### Test 6: Valid status transition (should succeed)
+
+PATCH {{sales}}/SalesOrders(bc90c0e2-d744-4d7d-8570-4903e03ad180)
+Content-Type: application/json
+
+{
+  "status": "Confirmed"
+}
+
+### =====================================================================
+
+### Test Report Service - PingHealth Action
+POST http://localhost:4004/reports/PingHealth
+Content-Type: application/json
+
+{}
+
+### Call unbound action: GenerateReport
+POST http://localhost:4004/analytics/GenerateReport
+Content-Type: application/json
+
+{
+  "reportType": "Sales",
+  "startDate": "2026-01-01",
+  "endDate": "2026-05-31"
+}
+
+### ===================================================================
+
+
+GET http://localhost:4004/sales/SalesOrders
+### Confirm a specific order
+POST http://localhost:4004/sales/SalesOrders(d59cd470-f8ad-4c4a-8625-523653ed97ed)/SalesService.confirm
+Content-Type: application/json
+
+{}
+
+### Cancel a specific order (with reason parameter)
+POST http://localhost:4004/sales/SalesOrders(d59cd470-f8ad-4c4a-8625-523653ed97ed)/SalesService.cancel
+Content-Type: application/json
+
+{
+  "reason": "Customer changed their mind"
+}
+
+### Ship an order (with tracking info)
+POST http://localhost:4004/sales/SalesOrders(d59cd470-f8ad-4c4a-8625-523653ed97ed)/SalesService.ship
+Content-Type: application/json
+
+{
+  "trackingNumber": "TRK-2026-ABC123",
+  "carrier": "FedEx"
+}
+
